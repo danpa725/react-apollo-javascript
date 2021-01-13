@@ -1,4 +1,4 @@
-## react-apollo project
+# react-apollo project
 - movie app
 # tech stack
 - react
