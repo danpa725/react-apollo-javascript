@@ -1,7 +1,13 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 
+// const link = createHttpLink({
+//     uri: "https://48p1r2roz4.sse.codesandbox.io",
+// });
+
+// .168.0.114:4000
+
 const client = new ApolloClient({
-    uri: "https://movieql.now.sh/",
+    uri: "http://localhost:4000/",
     cache: new InMemoryCache(),
 });
 
