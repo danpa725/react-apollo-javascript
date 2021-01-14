@@ -7,7 +7,9 @@ const GET_MOVIES = gql`
         movies {
             id
             title
-            medium_cover_image
+            large_cover_image
+            rating
+            runtime
         }
     }
 `;
@@ -16,45 +18,57 @@ const GET_MOVIES = gql`
 const Container = styled.div`
     width: 100%;
     height: 100vh;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-        "Lucida Sans", Arial, sans-serif;
+
+    margin-bottom: 1.25rem;
+
+    font-family: "Notable", sans-serif;
+    font-family: "Rajdhani", sans-serif;
     font-weight: 300;
 `;
 
 const Header = styled.div`
     display: flex;
     flex-direction: column;
-    color: white;
-    width: 100%;
-    height: 25rem;
-    margin: auto;
     align-items: center;
     justify-content: center;
-    background-color: #1f1f1f;
+
+    width: 100%;
+    height: 15rem;
+    margin: auto;
+
+    color: white;
+    background-color: #121517;
 `;
 
 const Title = styled.h1`
-    font-size: 3rem;
-    font-weight: 500;
     margin-bottom: 2.5rem;
+
+    font-size: 3.5rem;
+    font-weight: 700;
 `;
 
 const Subtitle = styled.h2`
-    font-size: 1.5rem;
+    font-size: 1.65rem;
 `;
 
 const Loading = styled.div`
     display: flex;
     justify-content: center;
+
+    margin-top: 5rem;
+
     font-size: 1.5rem;
     color: gray;
 `;
 
 const Contents = styled.div`
     display: grid;
-    margin: 0.5rem;
-    gap: 0.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 2fr));
+
+    padding: 1.25rem;
+    gap: 1.25rem;
+
+    background-color: #121517;
 `;
 
 const Home = () => {
@@ -71,9 +85,11 @@ const Home = () => {
             <Contents>
                 {!loading &&
                     data.movies &&
-                    data.movies.map((obj) => (
-                        <Movie key={obj.id} id={obj.id} />
-                    ))}
+                    data.movies.map((movie, index) => {
+                        return (
+                            <Movie key={movie.id} data={movie} index={index} />
+                        );
+                    })}
             </Contents>
         </Container>
     );
