@@ -1,6 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import styled from "styled-components";
 import Movie from "../components/Movie";
+import Loader from "../components/styles/Loading Motion/Loader";
 
 const GET_MOVIES = gql`
     {
@@ -53,16 +54,6 @@ const Subtitle = styled.h2`
     font-size: 1.65rem;
 `;
 
-const Loading = styled.div`
-    display: flex;
-    justify-content: center;
-
-    margin-top: 5rem;
-
-    font-size: 1.5rem;
-    color: gray;
-`;
-
 const Contents = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 2fr));
@@ -75,7 +66,6 @@ const Contents = styled.div`
 
 const Home = () => {
     const { loading, err, data } = useQuery(GET_MOVIES);
-    console.log(data);
     return (
         <Container>
             <Header>
@@ -84,7 +74,7 @@ const Home = () => {
             </Header>
 
             {/* 로딩 상태에 따른 렌더링 */}
-            {loading && <Loading>Loading...</Loading>}
+            {loading && <Loader />}
             {err && <div>err occure!</div>}
 
             <Contents>

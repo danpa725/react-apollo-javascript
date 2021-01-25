@@ -61,7 +61,6 @@ const Wrapper = styled.div`
 
 const Movie = ({ data, index }) => {
     const { id, title, rating, runtime, large_cover_image } = data;
-    console.log(large_cover_image);
     return (
         <Wrapper src={large_cover_image}>
             <Box>
