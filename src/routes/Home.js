@@ -19,11 +19,13 @@ const Container = styled.div`
     width: 100%;
     height: 100vh;
 
-    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
 
     font-family: "Notable", sans-serif;
     font-family: "Rajdhani", sans-serif;
     font-weight: 300;
+
+    background-color: #121517;
 `;
 
 const Header = styled.div`
@@ -73,15 +75,18 @@ const Contents = styled.div`
 
 const Home = () => {
     const { loading, err, data } = useQuery(GET_MOVIES);
+    console.log(data);
     return (
         <Container>
             <Header>
                 <Title>Searchable</Title>
                 <Subtitle>Searching Movies for You</Subtitle>
             </Header>
+
             {/* 로딩 상태에 따른 렌더링 */}
             {loading && <Loading>Loading...</Loading>}
             {err && <div>err occure!</div>}
+
             <Contents>
                 {!loading &&
                     data.movies &&

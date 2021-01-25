@@ -8,7 +8,8 @@ const GET_MOVIE = gql`
         movie(id: $id) {
             title
             description_full
-            medium_cover_image
+            large_cover_image
+            background_image
             rating
             runtime
             language

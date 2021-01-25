@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Tag from "./styles/Tag";
+import Tags from "./styles/Tags";
+import Title from "./styles/Title";
 
 const Box = styled.div`
     transition: all ease-in-out 0.5s;
@@ -35,54 +38,8 @@ const Number = styled.div`
     margin-left: -4.5rem;
 `;
 
-const Title = styled.h1`
-    flex: 3;
-    font-weight: 400;
-    font-size: 35px;
-    color: #fcfff5;
-
-    padding: 2.5rem;
-`;
-
-const Tags = styled.div`
-    transition: all ease-in-out 0.5s;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-
-    margin-bottom: 10px;
-
-    font-family: "Notable", sans-serif;
-    font-family: "Rajdhani", sans-serif;
-`;
-
-const Tag = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-
-    width: 62.5px;
-    height: 25px;
-
-    margin-right: 5px;
-
-    color: whitesmoke;
-    font-weight: 500;
-
-    background-color: #121517;
-    border: 1px solid whitesmoke;
-    border-radius: 12.5px;
-
-    &:hover {
-        color: #121517;
-        background-color: whitesmoke;
-    }
-`;
-
 const Wrapper = styled.div`
-    transition: all ease-in-out 0.2s;
+    transition: all ease-out 0.2s;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -97,18 +54,21 @@ const Wrapper = styled.div`
     border-radius: 5px;
 
     &:hover {
+        /* filter: url("../components/styles/images/blurMask.svg"); */
         transform: translateY(-5px);
     }
 `;
 
 const Movie = ({ data, index }) => {
     const { id, title, rating, runtime, large_cover_image } = data;
+    console.log(large_cover_image);
     return (
         <Wrapper src={large_cover_image}>
             <Box>
                 <Number>{index + 1}</Number>
 
                 <Link to={`/${id}`} style={{ textDecoration: "none" }}>
+                    {/* react-router-dom style 초기화 */}
                     <Title>{title}</Title>
                 </Link>
             </Box>
